@@ -1,9 +1,9 @@
 fileFormatVersion: 2
-guid: 54e797dee68708048bde9d658acd95d4
+guid: c6e0acd00825c8a448afe76365e5662b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -110,118 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tinyShip5_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 38
-        width: 34
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d763677532ce83345a4e9865f841a3df
-      internalID: -917422812
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tinyShip5_1
-      rect:
-        serializedVersion: 2
-        x: 35
-        y: 38
-        width: 34
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ac873f273985a5840b0f3586ed6c78f6
-      internalID: 181077911
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tinyShip5_2
-      rect:
-        serializedVersion: 2
-        x: 70
-        y: 38
-        width: 34
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3444cfd6a9085684186847ac7a4bdfd3
-      internalID: 839779039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tinyShip5_3
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 38
-        width: 34
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 399f1882819f4194da118f2348b5e9f4
-      internalID: 604594226
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tinyShip5_4
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 38
-        width: 34
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd972008d411d754a8b902cc48c659f2
-      internalID: -954793793
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: tinyShip5_5
+      name: tinyShip8_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 34
-        height: 38
+        width: 32
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 917e676fb9be88c4cb703e8e243117e4
-      internalID: -1164815760
+      spriteID: ad4545288c960564ebea51625b9a07f4
+      internalID: 1435521033
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tinyShip5_6
+      name: tinyShip8_1
       rect:
         serializedVersion: 2
-        x: 35
+        x: 33
         y: 0
-        width: 34
-        height: 38
+        width: 32
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5859af84e64f8f4198012586fd00c72
-      internalID: 1421726421
+      spriteID: 7a0851d7abe7b974ab2c5056745738d1
+      internalID: -321709981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tinyShip5_7
+      name: tinyShip8_2
       rect:
         serializedVersion: 2
-        x: 70
+        x: 66
         y: 0
-        width: 34
-        height: 38
+        width: 32
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc3d1c7130bfc1b4e9d01ee7c414ddca
-      internalID: -1824259434
+      spriteID: 06768d753c925bb4baf62187a2027c0a
+      internalID: -809556502
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tinyShip5_8
+      name: tinyShip8_3
       rect:
         serializedVersion: 2
-        x: 105
+        x: 99
         y: 0
-        width: 34
-        height: 38
+        width: 32
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,20 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98b6fae5517a032418ae8346de00905f
-      internalID: -919080832
+      spriteID: 0cdab2df67256034fa6fc95c07f74229
+      internalID: 319669185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: tinyShip5_9
+      name: tinyShip8_4
       rect:
         serializedVersion: 2
-        x: 140
+        x: 132
         y: 0
-        width: 34
-        height: 38
+        width: 32
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -313,8 +208,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d764abfc8fb491b4f90a41e271c65f3b
-      internalID: 1640022813
+      spriteID: 72bdbb86501b26f4bb4d771c4d380ebb
+      internalID: -1776269527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tinyShip8_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 0
+        width: 32
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecf3f2ae104117343b01a2c8204d4a62
+      internalID: 1076295178
       vertices: []
       indices: 
       edges: []
@@ -330,16 +246,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      tinyShip5_0: -917422812
-      tinyShip5_1: 181077911
-      tinyShip5_2: 839779039
-      tinyShip5_3: 604594226
-      tinyShip5_4: -954793793
-      tinyShip5_5: -1164815760
-      tinyShip5_6: 1421726421
-      tinyShip5_7: -1824259434
-      tinyShip5_8: -919080832
-      tinyShip5_9: 1640022813
+      tinyShip8_0: 1435521033
+      tinyShip8_1: -321709981
+      tinyShip8_2: -809556502
+      tinyShip8_3: 319669185
+      tinyShip8_4: -1776269527
+      tinyShip8_5: 1076295178
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
