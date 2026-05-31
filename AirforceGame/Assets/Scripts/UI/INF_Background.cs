@@ -18,7 +18,7 @@ public class INF_Background : MonoBehaviour
     }
     void Update()
     {
-        float moveY = Time.deltaTime * MoveSpeed;
+        float moveY = Time.deltaTime * MoveSpeed * PlayerManager.playerManager.boost;
         //Time.deltatime == 이전 프레임부터 현재 프레임까지 걸린 시간(초)
         //basically the time it takes for your computer to render a single frame.
         
