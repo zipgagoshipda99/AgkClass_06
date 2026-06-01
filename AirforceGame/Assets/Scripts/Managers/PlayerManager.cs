@@ -29,8 +29,12 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]private float energy;
     [SerializeField]private float maxEnergy;
     [SerializeField]private float energyRegen;
+    [SerializeField]private float health;
+    [SerializeField]private float maxHealth;
+    [SerializeField]private GameObject destroyEffect;
     private float powerBoost = 3f;
     private bool boosting = false;
+    private bool energyLowShown = false;
 
 
     // Start is called before the first frame update
@@ -41,6 +45,9 @@ public class PlayerManager : MonoBehaviour
         energy = maxEnergy;
         //게임 시작때 에너지 표시용
         UI_Controller.uiController.UpdEnergySlider(energy, maxEnergy);
+        health = maxHealth;
+        UI_Controller.uiController.UpdHealthSlider(health, maxHealth);
+        
     }
 
     // Update is called once per frame
@@ -86,6 +93,18 @@ public class PlayerManager : MonoBehaviour
                 energy += energyRegen;
             }
         }
+        bool isLow = energy < 10f;
+        if (isLow != energyLowShown) //the opposite of.. 
+                                    // isLow 가 true 고 energyLowShown이 false 일때와.
+                                    // isLow 가 false이고 energyLowShown 이 true 일때 2가지 경우 ㅇㅇ
+        {
+            energyLowShown = isLow;
+            UI_Controller.uiController.energyLowText.text = isLow ? "energy is low please wait until regen." : "";
+                                                                    //isLow가 True 일때는 energy is low please wait until regen로 텍스트 변환
+                                                                    //isLow가 false 일때는 ""로 텍스트 변환
+        }
+
+   
         UI_Controller.uiController.UpdEnergySlider(energy, maxEnergy);
     }
     private void EnterBoost()
@@ -102,5 +121,23 @@ public class PlayerManager : MonoBehaviour
         animator.SetBool("isBoosting", false);
         boost = 1f;
         boosting = false;
+    }
+    private void OnCollisionEnter2D(Collision2D enteredCollision)
+    {
+        if (enteredCollision.gameObject.CompareTag("Obstacle"))
+        {
+            TakeDamage(1);
+        }
+    }
+    private void TakeDamage(int damage)
+    {
+        health -= damage;
+        UI_Controller.uiController.UpdHealthSlider(health, maxHealth);
+        if (health <= 0)
+        {
+            boost = 0f;
+            gameObject.SetActive(false);
+            Instantiate(destroyEffect, transform.position, transform.rotation);
+        }
     }
 }

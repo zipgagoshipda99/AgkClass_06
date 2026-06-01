@@ -3,16 +3,17 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Obstacle
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - LevelBoundaries
+  - Obstacles
   - 
   - 
   - 
@@ -43,6 +44,9 @@ TagManager:
     locked: 0
   - name: background
     uniqueID: 3956984819
+    locked: 0
+  - name: Objects
+    uniqueID: 2548186165
     locked: 0
   - name: player
     uniqueID: 1191186075
