@@ -53,27 +53,30 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {// -1 , 0, 1 씩만 움직이게 함
-        float directionX = Input.GetAxisRaw("Horizontal");
-        float directionY = Input.GetAxisRaw("Vertical");
-        animator.SetFloat("MoveX", directionX);
-        animator.SetFloat("MoveY", directionY);
-        playerDirection = new Vector2(directionX, directionY);//.normalized 도 가능 .Normalize() 대신 근데 .normalized는 메모리에 복사본 만들어서 아까우니 이렇게 하는것.
-        playerDirection.Normalize(); //원본 벡터값을 직접 변경하는것
-        //벡터의 방향은 그대로 유지한 채, 벡터의 길이(크기)를 '1'로 만들어 반환(정규화)하는 속성 = normalized
-        //대각선으로 오른쪽 키와 위쪽 키를 눌르면 1.42~~ 어쩌고 나오는건 피타고라스 성질 때문. (대각선이니.)
-        //.normalized is a property that returns a new vector with the exact same direction as the original vector, but with a magnitude (length) scaled to exactly 1
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
+        if(Time.timeScale > 0)
         {
-            EnterBoost();
-        }
-        else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Fire2"))
-        {
-            ExitBoost();
+            float directionX = Input.GetAxisRaw("Horizontal");
+            float directionY = Input.GetAxisRaw("Vertical");
+            animator.SetFloat("MoveX", directionX);
+            animator.SetFloat("MoveY", directionY);
+            playerDirection = new Vector2(directionX, directionY);//.normalized 도 가능 .Normalize() 대신 근데 .normalized는 메모리에 복사본 만들어서 아까우니 이렇게 하는것.
+            playerDirection.Normalize(); //원본 벡터값을 직접 변경하는것
+            //벡터의 방향은 그대로 유지한 채, 벡터의 길이(크기)를 '1'로 만들어 반환(정규화)하는 속성 = normalized
+            //대각선으로 오른쪽 키와 위쪽 키를 눌르면 1.42~~ 어쩌고 나오는건 피타고라스 성질 때문. (대각선이니.)
+            //.normalized is a property that returns a new vector with the exact same direction as the original vector, but with a magnitude (length) scaled to exactly 1
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetButtonDown("Fire2"))
+            {
+                EnterBoost();
+            }
+            else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Fire2"))
+            {
+                ExitBoost();
+            }
         }
     }
     private void FixedUpdate()
     {
-        //가로축은 +1f이므로 오르쪽이므로 이동, 0은 세로축이므로 이동 안함
+        //새로운 vector 2를 저장한 변수에서 x값과 y값을 각각 움직이는 속도와 곱하고 속력을 구하는거 (거리 분의 시간 = 속력)
         rb2D.velocity = new Vector2(playerDirection.x *moveSpeed, playerDirection.y*moveSpeed);
         if (boosting == true)
         {
@@ -116,7 +119,7 @@ public class PlayerManager : MonoBehaviour
             boosting = true;
         }
     }
-    private void ExitBoost()
+    public void ExitBoost()
     {
         animator.SetBool("isBoosting", false);
         boost = 1f;

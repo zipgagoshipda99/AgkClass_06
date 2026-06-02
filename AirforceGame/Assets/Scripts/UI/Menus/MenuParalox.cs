@@ -5,7 +5,7 @@ using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class INF_Background : MonoBehaviour
+public class MenuParalox : MonoBehaviour
 {
 
     [SerializeField] private float moveSpeed = 2f;
@@ -18,7 +18,7 @@ public class INF_Background : MonoBehaviour
     }
     void Update()
     {
-        float moveY = Time.deltaTime * moveSpeed * PlayerManager.playerManager.boost;
+        float moveY = Time.deltaTime * moveSpeed;
         //Time.deltatime == 이전 프레임부터 현재 프레임까지 걸린 시간(초)
         //basically the time it takes for your computer to render a single frame.
         

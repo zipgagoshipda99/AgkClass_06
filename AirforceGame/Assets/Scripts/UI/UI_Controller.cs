@@ -24,8 +24,8 @@ public class UI_Controller : MonoBehaviour
     [SerializeField] private Slider healthSlider;
     [SerializeField] private TMP_Text healthText;
     public TMP_Text energyLowText;
+    public GameObject pausePanel;
 
-    
     public void UpdEnergySlider(float currentEnergy, float maxEnergy)
     {
         energySlider.maxValue = maxEnergy;
