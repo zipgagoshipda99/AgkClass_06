@@ -7,15 +7,17 @@ public class Asteroids : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rb2D;
     [SerializeField] private Sprite[] sprites;
+    [SerializeField]private Material whiteMaterial;
+    private Material defaultMaterial;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         rb2D = GetComponent<Rigidbody2D>();
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
-
-    float driftX = Random.Range(-0.5f, 0.5f);            // left/right drift
-    float fallSpeedY = Random.Range(1f, 1f); //
-    rb2D.velocity = new Vector2(driftX, -fallSpeedY);             // -Y를 강제로 -로 변경해서 밑으로 내려가도록 함
+        float driftX = Random.Range(-0.5f, 0.5f);            // left/right drift
+        float fallSpeedY = Random.Range(1f, 1f); //
+        rb2D.velocity = new Vector2(driftX, -fallSpeedY); // -Y를 강제로 -로 변경해서 밑으로 내려가도록 함         
+        defaultMaterial = spriteRenderer.material;
     }
 
     void Update()
@@ -28,7 +30,7 @@ public class Asteroids : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }    
+    }
     // void Start()
     // {
     //     spriteRenderer = GetComponent<SpriteRenderer>();
@@ -37,7 +39,7 @@ public class Asteroids : MonoBehaviour
     //     float pushX = Random.Range(-1f, 2f); //float 쓰면 -1.0~ 1.0 까지 모든 수 포함 ㅇㅇ
     //     float pushY = Random.Range(-1f,1f); //이건 -1.0~1.0 까지 모든 수 포함
     //     rb2D.velocity = new Vector2(pushX, pushY);
-        
+
     // }
 
     // // Update is called once per frame
@@ -51,4 +53,17 @@ public class Asteroids : MonoBehaviour
     //         Destroy(gameObject);
     //     }
     // }
+    private IEnumerator MaterialChangeWithDelay()
+    {
+        spriteRenderer.material = whiteMaterial;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.material = defaultMaterial;
+    }
+    private void OnCollisionEnter2D(Collision2D enteredCollison)
+    {
+        if (enteredCollison.gameObject.CompareTag("Player") || enteredCollison.gameObject.CompareTag("Bullet"))
+        {
+            StartCoroutine("MaterialChangeWithDelay");
+        }
+    }
 }

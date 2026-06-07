@@ -33,9 +33,11 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]private float maxHealth;
     [SerializeField]private GameObject destroyEffect;
     [SerializeField]private Material whiteMaterial;
+    [SerializeField]private ParticleSystem engineEffects;
+    
     private Material defaultMaterial;
     private SpriteRenderer spriteRenderer;
-    private float powerBoost = 3f;
+    private float powerBoost = 4f;
     private bool boosting = false;
     private bool energyLowShown = false;
 
@@ -77,6 +79,12 @@ public class PlayerManager : MonoBehaviour
             else if (Input.GetKeyUp(KeyCode.Space) || Input.GetButtonUp("Fire2"))
             {
                 ExitBoost();
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetButtonDown("Fire1") && BeamWeapon.beamWeapon.isShooting == false)
+            {
+                BeamWeapon.beamWeapon.StartCoroutine("WaitThenShoot");
+                AudioManager.audioManager.PlayRandomSoundWithNoCutoff(AudioManager.audioManager.Pew, AudioManager.audioManager.PewSoundFiles);
             }
         }
     }
@@ -124,6 +132,7 @@ public class PlayerManager : MonoBehaviour
             boost = powerBoost;
             boosting = true;
             AudioManager.audioManager.PlaySound(AudioManager.audioManager.fire);
+            engineEffects.Play();
         }
     }
     public void ExitBoost()
@@ -134,6 +143,7 @@ public class PlayerManager : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D enteredCollision)
     {
+        Debug.Log("Player collided with: " + enteredCollision.gameObject.name); // 누가 부딪혔는지 확인
         if (enteredCollision.gameObject.CompareTag("Obstacle"))
         {
             TakeDamage(1);
