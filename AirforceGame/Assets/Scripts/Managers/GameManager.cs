@@ -35,12 +35,14 @@ public class GameManager : MonoBehaviour
         {
             UI_Controller.uiController.pausePanel.SetActive(true);
             Time.timeScale = 0f;
+            AudioManager.audioManager.PlaySound(AudioManager.audioManager.pause);
         }
         else
         {
             UI_Controller.uiController.pausePanel.SetActive(false);
             Time.timeScale = 1f;
             PlayerManager.playerManager.ExitBoost();
+            AudioManager.audioManager.PlaySound(AudioManager.audioManager.unPause);
         }
     }
     public void QuitGame()
@@ -59,5 +61,11 @@ public class GameManager : MonoBehaviour
     public void GoToMainMenu()
     {
         SceneManager.LoadScene("MainGameMenu");
+    }
+    public IEnumerator DelayShowGameOverScreen()
+    {
+        yield return new WaitForSeconds(2f);
+        SceneManager.LoadScene("GameOver");
+        
     }
 }

@@ -21,5 +21,6 @@ public class Whale : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }    
+        
+    }
 }

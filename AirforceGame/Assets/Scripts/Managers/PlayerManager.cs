@@ -32,6 +32,9 @@ public class PlayerManager : MonoBehaviour
     [SerializeField]private float health;
     [SerializeField]private float maxHealth;
     [SerializeField]private GameObject destroyEffect;
+    [SerializeField]private Material whiteMaterial;
+    private Material defaultMaterial;
+    private SpriteRenderer spriteRenderer;
     private float powerBoost = 3f;
     private bool boosting = false;
     private bool energyLowShown = false;
@@ -42,11 +45,14 @@ public class PlayerManager : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb2D = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
         energy = maxEnergy;
         //게임 시작때 에너지 표시용
         UI_Controller.uiController.UpdEnergySlider(energy, maxEnergy);
         health = maxHealth;
         UI_Controller.uiController.UpdHealthSlider(health, maxHealth);
+        defaultMaterial = spriteRenderer.material;
         
     }
 
@@ -117,6 +123,7 @@ public class PlayerManager : MonoBehaviour
             animator.SetBool("isBoosting", true);
             boost = powerBoost;
             boosting = true;
+            AudioManager.audioManager.PlaySound(AudioManager.audioManager.fire);
         }
     }
     public void ExitBoost()
@@ -136,11 +143,21 @@ public class PlayerManager : MonoBehaviour
     {
         health -= damage;
         UI_Controller.uiController.UpdHealthSlider(health, maxHealth);
+        AudioManager.audioManager.PlaySound(AudioManager.audioManager.hit);
+        StartCoroutine("MaterialChangeWithDelay");
         if (health <= 0)
         {
             boost = 0f;
             gameObject.SetActive(false);
             Instantiate(destroyEffect, transform.position, transform.rotation);
+            GameManager.gameManager.StartCoroutine(GameManager.gameManager.DelayShowGameOverScreen());
+            AudioManager.audioManager.PlaySound(AudioManager.audioManager.ice);
         }
+    }
+    private IEnumerator MaterialChangeWithDelay()
+    {
+        spriteRenderer.material = whiteMaterial;
+        yield return new WaitForSeconds(0.2f);
+        spriteRenderer.material = defaultMaterial;
     }
 }
