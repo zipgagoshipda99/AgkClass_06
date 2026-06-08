@@ -84,7 +84,6 @@ public class PlayerManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.RightShift) || Input.GetButtonDown("Fire1") && BeamWeapon.beamWeapon.isShooting == false)
             {
                 BeamWeapon.beamWeapon.StartCoroutine("WaitThenShoot");
-                AudioManager.audioManager.PlayRandomSoundWithNoCutoff(AudioManager.audioManager.Pew, AudioManager.audioManager.PewSoundFiles);
             }
         }
     }

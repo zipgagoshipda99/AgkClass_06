@@ -8,16 +8,21 @@ public class Asteroids : MonoBehaviour
     private Rigidbody2D rb2D;
     [SerializeField] private Sprite[] sprites;
     [SerializeField]private Material whiteMaterial;
+    [SerializeField]private GameObject destroyEffect;
+    [SerializeField]private int obstacleLives;
+
     private Material defaultMaterial;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        defaultMaterial = spriteRenderer.material;
         rb2D = GetComponent<Rigidbody2D>();
         spriteRenderer.sprite = sprites[Random.Range(0, sprites.Length)];
         float driftX = Random.Range(-0.5f, 0.5f);            // left/right drift
         float fallSpeedY = Random.Range(1f, 1f); //
-        rb2D.velocity = new Vector2(driftX, -fallSpeedY); // -Y를 강제로 -로 변경해서 밑으로 내려가도록 함         
-        defaultMaterial = spriteRenderer.material;
+        rb2D.velocity = new Vector2(driftX, -fallSpeedY); // -Y를 강제로 -로 변경해서 밑으로 내려가도록 함       
+        float randomScale = Random.Range(0.6f, 1f);
+        transform.localScale = new Vector2(randomScale, randomScale);
     }
 
     void Update()
@@ -59,11 +64,20 @@ public class Asteroids : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
         spriteRenderer.material = defaultMaterial;
     }
-    private void OnCollisionEnter2D(Collision2D enteredCollison)
+    private void OnCollisionEnter2D(Collision2D enteredCollision)
     {
-        if (enteredCollison.gameObject.CompareTag("Player") || enteredCollison.gameObject.CompareTag("Bullet"))
+        if (enteredCollision.gameObject.CompareTag("Player") || enteredCollision.gameObject.CompareTag("Bullet"))
         {
+            Debug.Log(gameObject.name + "collided with" + enteredCollision.gameObject.name);
             StartCoroutine("MaterialChangeWithDelay");
+            AudioManager.audioManager.PlayModifiedSound(AudioManager.audioManager.hitObstacle);
+            obstacleLives --;
+            if (obstacleLives <= 0)
+            {
+                Instantiate(destroyEffect, transform.position, transform.rotation);
+                AudioManager.audioManager.PlayModifiedSound(AudioManager.audioManager.boom2);
+                Destroy(gameObject);
+            }
         }
     }
 }

@@ -54,6 +54,8 @@ MonoBehaviour:
   - {fileID: 2121935205, guid: 101da51a38acd2e48800a1ea32a94bc8, type: 3}
   - {fileID: 1888245913, guid: 101da51a38acd2e48800a1ea32a94bc8, type: 3}
   whiteMaterial: {fileID: 2100000, guid: 47f6cef96464f4c439b07a6c24ea3535, type: 2}
+  destroyEffect: {fileID: 1580425589822883221, guid: e9b9cf20534abf44f8ca9e0842eebbcd, type: 3}
+  obstacleLives: 5
 --- !u!212 &102516901837115836
 SpriteRenderer:
   m_ObjectHideFlags: 0

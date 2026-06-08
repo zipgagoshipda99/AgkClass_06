@@ -26,8 +26,9 @@ public class BeamWeapon : MonoBehaviour
         isShooting = true;
         //Instantiate(prefab, transform.position, transform.rotation);
         GameObject bullet = bulletPool.GetPooledObject();
-        bullet.transform.position = transform.position; //bullet 위치가 플레이어 child인 beamweapon 과 같은 위치이도록 하는 코드
+        bullet.transform.position = transform.position; //bullet 위치가 이 스크립트가 부착된 오브젝트 위치에서부터 생성? 되도록 설정.
         bullet.SetActive(true);
+        AudioManager.audioManager.PlayRandomSoundWithNoCutoff(AudioManager.audioManager.Pew, AudioManager.audioManager.PewSoundFiles);
         yield return new WaitForSeconds(0.2f);
         isShooting = false;
     }
